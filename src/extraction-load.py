@@ -35,7 +35,6 @@ symbols = ["GC=F", "SI=F", "CL=F", "BZ=F", "ZS=F", "KC=F"]
 # Creates sqlalchemy engine
 engine = create_engine(config["database_url"])
 
-
 # Fetches historial price data for a given ticker
 
 def fetch_df(symbol, period="2y", interval="1d"):
@@ -45,11 +44,10 @@ def fetch_df(symbol, period="2y", interval="1d"):
     return df
 
 
-# Uses Pandas to conect to database
+# Uses Pandas to connect to database
 
 def connect_to_database(df, schema ="public"):
-    df.to_sql("Assets", engine, schema=schema, if_exists='append', index=True, index_label="Date")
-
+    df.to_sql("commodities", engine, schema=schema, if_exists='append', index=True, index_label="Date")
 
 
 if __name__== "__main__": 
